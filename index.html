@@ -3,434 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТАЙШЕТ // СИБИРСКИЙ КИБЕР-УЗЕЛ</title>
+    <title>Тайшет — Городской Информационный Портал</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Иконки Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @keyframes neon-pulse {
-            0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 2px #3b82f6); }
-            50% { opacity: 1; filter: drop-shadow(0 0 10px #3b82f6); }
-        }
-        .neon-glow { animation: neon-pulse 2s infinite; }
-    </style>
 </head>
-<body class="bg-[#0b0f19] text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-black">
+<body class="bg-[#0f141c] text-slate-300 font-sans antialiased">
 
-    <!-- КИБЕР-НАВИГАЦИЯ -->
-    <nav class="sticky top-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-blue-900/40">
+    <!-- НАВИГАЦИЯ -->
+    <nav class="sticky top-0 z-50 bg-[#0f141c]/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3 group">
-                <div class="bg-gradient-to-br from-blue-600 to-cyan-400 text-black p-2 rounded-xl shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                    <i data-lucide="train-front" class="w-5 h-5"></i>
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-xl shadow-lg shadow-blue-600/20">
+                    <i data-lucide="subway" class="w-5 h-5"></i>
                 </div>
-                <span class="text-xl font-black tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-blue-400">ТАЙШЕТ</span>
+                <span class="text-lg font-bold tracking-wider text-white">ТАЙШЕТ НА СВЯЗИ</span>
             </div>
-            <div class="hidden md:flex space-x-6 text-sm font-bold tracking-wider uppercase text-slate-400">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">Инфо</a>
-                <a href="#news" class="hover:text-red-400 transition-colors">Сводка</a>
-                <a href="#places" class="hover:text-purple-400 transition-colors">Локации</a>
-                <a href="#board" class="hover:text-amber-400 transition-colors">Терминал ЖД</a>
-                <a href="#quiz" class="hover:text-emerald-400 transition-colors">Хак-Квиз</a>
-                <a href="#contacts" class="hover:text-rose-400 transition-colors">Службы</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+                <a href="#news" class="hover:text-white transition">Новости</a>
+                <a href="#transport" class="hover:text-white transition">Расписание</a>
+                <a href="#control" class="hover:text-white transition">Сообщить о проблеме</a>
+                <a href="#contacts" class="hover:text-white transition">Контакты</a>
             </div>
-            <div class="flex items-center space-x-2 text-xs font-mono bg-blue-950/40 border border-blue-900/60 px-3 py-1.5 rounded-lg text-cyan-400 shadow-[inset_0_0_10px_rgba(34,211,238,0.1)]">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 neon-glow"></span>
-                <span id="local-time">SYS_TIME: LOAD...</span>
+            <div class="text-xs font-mono bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-blue-400">
+                <span id="local-time">Загрузка времени...</span>
             </div>
         </div>
     </nav>
 
-    <!-- МЕГА ГЛАВНЫЙ ЭКРАН -->
-    <header class="relative overflow-hidden py-28 md:py-40 border-b border-blue-900/30">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1e1b4b,transparent)]"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(11,15,25,0.9))]"></div>
-        
-        <div class="relative max-w-6xl mx-auto px-4 text-center md:text-left z-10">
-            <span class="inline-flex items-center gap-1.5 bg-blue-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-mono uppercase tracking-[0.15em] px-3 py-1 rounded-md mb-6 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-                <i data-lucide="activity" class="w-3.5 h-3.5 animate-pulse"></i> СИБИРЬ // СЕКТОР ИРКУТСК
+    <!-- ШАПКА -->
+    <header class="relative bg-gradient-to-b from-slate-900 to-[#0f141c] py-20 border-b border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-4">
+            <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold px-3 py-1 rounded-md mb-4 inline-block">
+                Официальный мониторинг города
             </span>
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 uppercase">
-                СТАРТ <br class="hidden md:inline">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 drop-shadow-[0_0_30px_rgba(6,182,212,0.3)]">
-                    МАГИСТРАЛИ БАМ
-                </span>
+            <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+                Информационный узел Тайшета
             </h1>
-            <p class="text-base md:text-lg text-slate-400 max-w-2xl mb-10 font-medium tracking-wide leading-relaxed">
-                Главный технологический и логистический узел. Точка отсчёта километража великого Байкало-Амурского пути. Железнодорожный сектор стальной воли.
+            <p class="text-slate-400 max-w-2xl text-base font-light leading-relaxed">
+                Актуальный график движения поездов и пригородных автобусов, оперативные сводки происшествий от ИА «Тайшет24» и прямая связь с городскими службами.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <a href="#news" class="group relative px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider text-sm bg-red-600 hover:bg-red-500 text-white transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)] flex items-center justify-center gap-2 overflow-hidden">
-                    <i data-lucide="zap" class="w-4 h-4 text-amber-300"></i> Тайшет24 Лента
-                </a>
-                <a href="#quiz" class="px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider text-sm bg-transparent border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-all shadow-[0_0_15px_rgba(6,182,212,0.1)] flex items-center justify-center gap-2">
-                    <i data-lucide="terminal" class="w-4 h-4"></i> Запустить Квиз
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- ТЕХНО-МЕТРИКИ -->
-    <section id="about" class="py-12 max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-[#0f172a]/60 border border-blue-900/40 p-6 rounded-2xl shadow-[inset_0_0_15px_rgba(30,58,138,0.2)]">
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">// Основан</div>
-                <div class="text-2xl font-black text-white tracking-wide">1897 ГОД</div>
-            </div>
-            <div class="bg-[#0f172a]/60 border border-blue-900/40 p-6 rounded-2xl shadow-[inset_0_0_15px_rgba(30,58,138,0.2)]">
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">// Население</div>
-                <div class="text-2xl font-black text-cyan-400 tracking-wide">~32 000 ЧЕЛ</div>
-            </div>
-            <div class="bg-[#0f172a]/60 border border-blue-900/40 p-6 rounded-2xl shadow-[inset_0_0_15px_rgba(30,58,138,0.2)]">
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">// Нулевой км</div>
-                <div class="text-2xl font-black text-emerald-400 tracking-wide">НАЧАЛО БАМА</div>
-            </div>
-            <div class="bg-[#0f172a]/60 border border-blue-900/40 p-6 rounded-2xl shadow-[inset_0_0_15px_rgba(30,58,138,0.2)]">
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">// Индекс таймзоны</div>
-                <div class="text-2xl font-black text-purple-400 tracking-wide">UTC +8 (ИРК)</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СВОДКИ НОВОСТЕЙ С КИБЕР-ЭФФЕКТАМИ -->
-    <section id="news" class="py-16 border-t border-blue-900/20 bg-[#0d1321]">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-blue-900/40 pb-6">
-                <div>
-                    <h2 class="text-2xl font-black tracking-widest text-red-500 uppercase flex items-center gap-2">
-                        <span class="bg-red-600 text-black px-2 py-0.5 rounded text-sm font-black">TAISHET</span> 24 NETWORK
-                    </h2>
-                    <p class="text-slate-500 font-mono text-xs mt-1">>> Сканирование инфополей и городских событий</p>
-                </div>
-                <div class="mt-4 md:mt-0 text-xs font-mono text-red-400 bg-red-950/30 border border-red-900/50 px-3 py-1.5 rounded-md flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-ping"></span>
-                    <span>ПОТОК ДАННЫХ АКТИВЕН</span>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6" id="news-container"></div>
-        </div>
-    </section>
-
-    <!-- ИНТЕРАКТИВНЫЕ ЛОКАЦИИ -->
-    <section id="places" class="py-16 max-w-6xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+    <!-- ЛЕНТА ТАЙШЕТ24 -->
+    <section id="news" class="py-12 max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
             <div>
-                <h2 class="text-3xl font-black tracking-wide uppercase text-white">Секторы интереса</h2>
-                <p class="text-slate-500 font-mono text-xs mt-1">>> Выберите категорию для фильтрации матрицы карты</p>
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="bg-red-600 text-white px-1.5 py-0.5 rounded text-xs">ИА</span> Сводка Тайшет24
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">Последние подтвержденные события в округе</p>
             </div>
-            <div class="flex gap-2 mt-4 md:mt-0 font-mono text-xs">
-                <button onclick="filterPlaces('all')" id="btn-all" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-bold transition shadow-[0_0_15px_rgba(59,130,246,0.3)]">ALL</button>
-                <button onclick="filterPlaces('history')" id="btn-history" class="px-4 py-2 rounded-lg bg-slate-900 border border-blue-900/60 text-slate-400 hover:text-white transition">HISTORY</button>
-                <button onclick="filterPlaces('nature')" id="btn-nature" class="px-4 py-2 rounded-lg bg-slate-900 border border-blue-900/60 text-slate-400 hover:text-white transition">NATURE</button>
-            </div>
+            <span class="text-xs text-slate-400 font-mono bg-slate-900 px-2.5 py-1 rounded border border-slate-800">2026</span>
         </div>
-        <div class="grid md:grid-cols-3 gap-6" id="places-grid">
-            <!-- Локация 1 -->
-            <div class="bg-[#0f172a]/80 border border-blue-900/30 rounded-2xl overflow-hidden transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] group" data-category="history">
-                <div class="h-44 bg-purple-950/20 relative flex items-center justify-center text-purple-400 border-b border-blue-900/30">
-                    <i data-lucide="shield" class="w-10 h-10 group-hover:scale-110 transition-transform"></i>
-                    <span class="absolute top-3 left-3 bg-purple-950 text-purple-400 border border-purple-500/30 text-[10px] font-mono uppercase px-2 py-0.5 rounded">Мемориал</span>
+        <div class="grid md:grid-cols-3 gap-6" id="news-container"></div>
+    </section>
+
+    <!-- ТРАНСПОРТНЫЙ ХАБ (ПОЕЗДА + АВТОБУСЫ) -->
+    <section id="transport" class="py-12 bg-slate-900/40 border-y border-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-[#131924] border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-slate-800/80 pb-6 mb-6 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-blue-600/10 border border-blue-500/30 text-blue-400 p-2.5 rounded-xl">
+                            <i data-lucide="bus" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white">Пассажирский транспорт</h2>
+                            <p class="text-xs text-slate-500">График отправления со станций Тайшета</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Переключатель вкладок -->
+                    <div class="bg-[#0f141c] p-1 rounded-xl flex border border-slate-800 self-start lg:self-center">
+                        <button onclick="switchTab('train')" id="tab-train" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white transition-all">Поезда ЖД</button>
+                        <button onclick="switchTab('bus')" id="tab-bus" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all">Автобусы / Пазики</button>
+                    </div>
                 </div>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg text-white mb-2">Памятник воинам-землякам</h3>
-                    <p class="text-slate-400 text-sm font-normal leading-relaxed">Исторический мемориальный комплекс во славу жителей Тайшета, павших в ВОВ.</p>
-                </div>
-            </div>
-            <!-- Локация 2 -->
-            <div class="bg-[#0f172a]/80 border border-blue-900/30 rounded-2xl overflow-hidden transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] group" data-category="history">
-                <div class="h-44 bg-cyan-950/20 relative flex items-center justify-center text-cyan-400 border-b border-blue-900/30">
-                    <i data-lucide="cpu" class="w-10 h-10 group-hover:scale-110 transition-transform"></i>
-                    <span class="absolute top-3 left-3 bg-cyan-950 text-cyan-400 border border-cyan-500/30 text-[10px] font-mono uppercase px-2 py-0.5 rounded">ЖД Системы</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg text-white mb-2">Кибер-Вокзал Тайшет</h3>
-                    <p class="text-slate-400 text-sm font-normal leading-relaxed">Главная артерия распределения грузов и отправная точка БАМа.</p>
-                </div>
-            </div>
-            <!-- Локация 3 -->
-            <div class="bg-[#0f172a]/80 border border-blue-900/30 rounded-2xl overflow-hidden transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] group" data-category="nature">
-                <div class="h-44 bg-emerald-950/20 relative flex items-center justify-center text-emerald-400 border-b border-blue-900/30">
-                    <i data-lucide="leaf" class="w-10 h-10 group-hover:scale-110 transition-transform"></i>
-                    <span class="absolute top-3 left-3 bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono uppercase px-2 py-0.5 rounded">Эко-зона</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg text-white mb-2">Центральный Городской Парк</h3>
-                    <p class="text-slate-400 text-sm font-normal leading-relaxed">Реконструированная природная зона отдыха посреди индустриального хаба.</p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="text-slate-500 text-xs border-b border-slate-800">
+                                <th class="pb-3 pl-2 font-semibold">Рейс / №</th>
+                                <th class="pb-3 font-semibold">Маршрут следования</th>
+                                <th class="pb-3 font-semibold">Время</th>
+                                <th class="pb-3 font-semibold">Статус движения</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transport-body" class="divide-y divide-slate-800/40">
+                            <!-- Рендеринг из JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ТЕРМИНАЛ ЖД ТАБЛО -->
-    <section id="board" class="py-16 max-w-6xl mx-auto px-4">
-        <div class="bg-[#090d16] border border-amber-500/30 rounded-3xl p-6 md:p-8 shadow-[0_0_30px_rgba(245,158,11,0.05)]">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between border-b border-blue-900/40 pb-6 mb-6 gap-4">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-amber-500/10 border border-amber-500/40 text-amber-400 p-3 rounded-xl shadow-[inset_0_0_10px_rgba(245,158,11,0.1)]">
-                        <i data-lucide="terminal" class="w-6 h-6 animate-pulse"></i>
+    <!-- СВЯЗЬ С ЕДДС / МОНИТОР ПРОБЛЕМ -->
+    <section id="control" class="py-12 max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-5 gap-8 items-start">
+            
+            <!-- Форма отправки -->
+            <div class="md:col-span-2 bg-[#131924] border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i> Сообщить о проблеме
+                </h3>
+                <p class="text-xs text-slate-500 mb-4">Данные публикуются на доске для отслеживания статуса ремонтных работ.</p>
+                
+                <form onsubmit="addIncident(event)" class="space-y-3 text-xs">
+                    <div>
+                        <label class="block text-slate-400 mb-1 font-medium">Ваше имя / ник</label>
+                        <input type="text" id="inc-name" required placeholder="Кирилл" class="w-full bg-[#0f141c] border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <h2 class="text-xl font-black uppercase tracking-widest text-white">ТРАФИК-МОНИТОР СТАНЦИИ</h2>
-                        <p class="text-xs font-mono text-amber-500/80">STATUS: ONLINE // СИНХРОНИЗАЦИЯ С ВСЖД ПОТОКОМ</p>
+                        <label class="block text-slate-400 mb-1 font-medium">Адрес / Локация</label>
+                        <input type="text" id="inc-address" required placeholder="ул. Гагарина, д. 4" class="w-full bg-[#0f141c] border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500">
                     </div>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3 font-mono text-xs">
-                    <input type="text" id="search-train" oninput="filterTrains()" placeholder="[Фильтр поезда/маршрута...]" class="bg-[#0f172a] border border-blue-900/60 text-white px-4 py-2.5 rounded-xl focus:outline-none focus:border-amber-500 transition-colors placeholder-slate-600 w-full sm:w-64">
-                    <div class="bg-[#070a12] p-1 rounded-xl flex border border-blue-900/40">
-                        <button onclick="switchTab('long')" id="tab-long" class="px-4 py-2 rounded-lg font-bold bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.3)] transition-all">ДАЛЬНИЕ</button>
-                        <button onclick="switchTab('sub')" id="tab-sub" class="px-4 py-2 rounded-lg font-bold text-slate-400 hover:text-white transition-all">ПРИГОРОД</button>
+                    <div>
+                        <label class="block text-slate-400 mb-1 font-medium">Суть проблемы</label>
+                        <textarea id="inc-text" rows="3" required placeholder="Не работает уличное освещение, темно..." class="w-full bg-[#0f141c] border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
                     </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg transition text-xs">
+                        Опубликовать на доску
+                    </button>
+                </form>
+            </div>
+
+            <!-- Сама интерактивная доска -->
+            <div class="md:col-span-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-base font-bold text-white uppercase tracking-wider">// Оперативный Мониторинг ЖКХ</h3>
+                    <span class="text-[11px] font-mono text-slate-500">Обновление: в реальном времени</span>
+                </div>
+                <div class="space-y-3" id="incidents-container">
+                    <!-- Объявления рендерятся тут -->
                 </div>
             </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse font-mono text-sm">
-                    <thead>
-                        <tr class="text-slate-500 text-xs uppercase tracking-wider border-b border-blue-900/40">
-                            <th class="pb-3 pl-2 font-bold">// ID ПОЕЗДА</th>
-                            <th class="pb-3 font-bold">// ВЕКТОР НАПРАВЛЕНИЯ</th>
-                            <th class="pb-3 font-bold">// ТАЙМИНГ</th>
-                            <th class="pb-3 font-bold">// МАТРИЦА СТАТУСА</th>
-                        </tr>
-                    </thead>
-                    <tbody id="trains-body" class="divide-y divide-blue-900/20"></tbody>
-                </table>
-            </div>
+
         </div>
     </section>
 
-    <!-- ТЕХНО-КВИЗ (ХАК-ИНТЕРФЕЙС) -->
-    <section id="quiz" class="py-16 bg-[#0a0e17] border-y border-blue-900/20">
-        <div class="max-w-2xl mx-auto px-4 text-center">
-            <span class="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-[0.2em] px-3 py-1 rounded-md mb-3">
-                [ КИБЕР-ТЕСТИРОВАНИЕ ЗНАНИЙ ]
-            </span>
-            <h2 class="text-3xl font-black text-white uppercase tracking-tight mb-2">БАЗА ДАННЫХ: ТАЙШЕТ</h2>
-            <p class="text-slate-500 font-mono text-xs mb-8">Пройди проверку ядра знаний на уровень доступа к лору БАМа</p>
-
-            <div class="bg-[#0f172a]/90 border border-emerald-500/30 p-6 md:p-8 rounded-2xl text-left shadow-[0_0_30px_rgba(16,185,129,0.03)] font-mono" id="quiz-box">
-                <!-- Контент генерируется через JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ЭКСТРЕННЫЕ КАНАЛЫ СВЯЗИ -->
-    <section id="contacts" class="py-16 max-w-6xl mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-2xl font-black uppercase text-white tracking-wider">Критически важные каналы</h2>
-            <p class="text-slate-500 font-mono text-xs mt-1">>> Аварийные протоколы связи и дежурные шлюзы города</p>
-        </div>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 font-mono">
-            <div class="bg-[#0f172a]/60 border border-red-900/40 p-6 rounded-xl flex items-start space-x-4 shadow-[inset_0_0_15px_rgba(220,38,38,0.05)]">
-                <div class="bg-red-950 text-red-400 p-3 rounded-lg border border-red-500/30"><i data-lucide="phone-call" class="w-5 h-5"></i></div>
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="py-12 bg-slate-900/20 border-t border-slate-800/80 max-w-6xl mx-auto px-4">
+        <div class="grid sm:grid-cols-3 gap-4 text-sm font-mono">
+            <div class="bg-[#131924] border border-slate-800 p-5 rounded-xl flex items-center space-x-4">
+                <div class="text-red-500"><i data-lucide="phone"></i></div>
                 <div>
-                    <h4 class="font-bold text-slate-300 text-sm uppercase">// СПАСЕНИЕ</h4>
-                    <p class="text-2xl font-black text-red-500 mt-1 drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]">112 / 101</p>
-                    <p class="text-[10px] text-slate-500 mt-1">Глобальный экстренный шлюз</p>
+                    <div class="text-xs text-slate-500">МЧС / Спасение</div>
+                    <div class="text-lg font-bold text-white">112 / 101</div>
                 </div>
             </div>
-            <div class="bg-[#0f172a]/60 border border-blue-900/40 p-6 rounded-xl flex items-start space-x-4 shadow-[inset_0_0_15px_rgba(59,130,246,0.05)]">
-                <div class="bg-blue-950 text-blue-400 p-3 rounded-lg border border-blue-500/30"><i data-lucide="shield-alert" class="w-5 h-5"></i></div>
+            <div class="bg-[#131924] border border-slate-800 p-5 rounded-xl flex items-center space-x-4">
+                <div class="text-blue-400"><i data-lucide="shield"></i></div>
                 <div>
-                    <h4 class="font-bold text-slate-300 text-sm uppercase">// МВД СЕКТОР</h4>
-                    <p class="text-2xl font-black text-blue-400 mt-1 drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">102</p>
-                    <p class="text-[10px] text-slate-500 mt-1">ОМВД по Тайшетскому району</p>
+                    <div class="text-xs text-slate-500">Полиция (Дежурная)</div>
+                    <div class="text-lg font-bold text-white">102</div>
                 </div>
             </div>
-            <div class="bg-[#0f172a]/60 border border-amber-900/40 p-6 rounded-xl flex items-start space-x-4 shadow-[inset_0_0_15px_rgba(245,158,11,0.05)]">
-                <div class="bg-amber-950 text-amber-400 p-3 rounded-lg border border-amber-500/30"><i data-lucide="cpu" class="w-5 h-5"></i></div>
+            <div class="bg-[#131924] border border-slate-800 p-5 rounded-xl flex items-center space-x-4">
+                <div class="text-amber-500"><i data-lucide="wrench"></i></div>
                 <div>
-                    <h4 class="font-bold text-slate-300 text-sm uppercase">// ЕДДС ДИСПЕТЧЕР</h4>
-                    <p class="text-xl font-black text-amber-400 mt-1.5">2-11-20</p>
-                    <p class="text-[10px] text-slate-500 mt-1">Запросы ЖКХ и аварии систем</p>
+                    <div class="text-xs text-slate-500">ЕДДС Города</div>
+                    <div class="text-lg font-bold text-white">2-11-20</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ТЕРМИНАЛЬНОЕ МОДАЛЬНОЕ ОКНО -->
-    <div id="news-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-[#0f172a] border border-blue-500/40 rounded-2xl max-w-lg w-full p-6 shadow-[0_0_40px_rgba(59,130,246,0.2)] relative font-mono">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white transition-colors">
+    <!-- МОДАЛКА НОВОСТЕЙ -->
+    <div id="news-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#131924] border border-slate-800 rounded-2xl max-w-md w-full p-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white transition">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            <div id="modal-content" class="text-sm"></div>
+            <div id="modal-content"></div>
         </div>
     </div>
 
-    <!-- ТЕХНО-ФУТЕР -->
-    <footer class="bg-[#070a12] text-slate-600 py-8 text-center text-[10px] font-mono border-t border-blue-900/20 uppercase tracking-widest">
-        <p>© 2026 TAISHET CORE NETWORK // DATA STREAM: TAISHET24</p>
+    <!-- ПОДВАЛ -->
+    <footer class="bg-[#0b0f17] text-slate-600 py-6 text-center text-xs border-t border-slate-900">
+        <p>© 2026 Информационный портал Тайшетского района. На основе данных ИА Тайшет24.</p>
     </footer>
 
-    <!-- СКРИПТОВАЯ МАТРИЦА -->
+    <!-- СКРИПТЫ -->
     <script>
         lucide.createIcons();
 
-        // СИНХРОНИЗАЦИЯ СИСТЕМНОГО ВРЕМЕНИ
+        // Время Иркутск
         function updateTime() {
             const now = new Date();
             const timeString = now.toLocaleTimeString('ru-RU', { timeZone: 'Asia/Irkutsk', hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('local-time').textContent = `SYS_TIME: ${timeString} [UTC+8]`;
+            document.getElementById('local-time').textContent = `Тайшет: ${timeString} (UTC+8)`;
         }
         setInterval(updateTime, 1000);
         updateTime();
 
-        // ДАННЫЕ НОВОСТНЫХ ЛЕНТ (TAISHET24)
+        // Новости
         const realNewsData = [
             {
-                category: "ЖД СЕТЬ", tagColor: "bg-blue-950 text-blue-400 border border-blue-500/30", time: "10:45",
-                title: "Модернизация путей на ВСЖД: Изменение трафика",
-                short: "Плановые технические работы в Тайшетском узле изменят график движения ряда составов.",
-                full: "Внедрение автоматизированных систем управления и замена полотна необходимы для расширения пропускной способности БАМа. Сверяйте тайминги в ЖД терминалах.",
-                views: 1420
+                category: "ЖД Транспорт", label: "bg-blue-950 text-blue-400", time: "10:45",
+                title: "Изменения в расписании на узле станции Тайшет",
+                short: "Плановые ремонтные работы на путях ВСЖД скорректируют график прибытия поездов.",
+                full: "В связи с расширением пропускной способности БАМа, на перегонах пройдут технические сессии. Актуальные данные смотрите в таблице ниже."
             },
             {
-                category: "КОНТРОЛЬ", tagColor: "bg-red-950 text-red-400 border border-red-500/30", time: "09:15",
-                title: "План-рейд «Мототранспорт» объявлен в округе",
-                short: "Сотрудники ДПС проведут тотальный аудит водителей двухколесного транспорта.",
-                full: "Госавтоинспекция усиливает патрули в Тайшетском районе в связи с ростом инцидентов. Мотоциклы и питбайки без документов отправятся на спец-штрафстоянки.",
-                views: 2850
+                category: "Безопасность", label: "bg-red-950 text-red-400", time: "09:15",
+                title: "ГИБДД Тайшета проводит рейды по мотоциклистам",
+                short: "Особое внимание уделят подросткам на питбайках без прав в черте города.",
+                full: "Проверки затронут центральные улицы и выезды в дачные секторы. Транспорт без регистрации будет отправляться на охраняемую штрафстоянку."
             },
             {
-                category: "КУЛЬТУРА", tagColor: "bg-purple-950 text-purple-400 border border-purple-500/30", time: "Вчера",
-                title: "Арт-событие в ДК «Юбилейный»",
-                short: "Творческие объединения подготовили новую футуристичную программу для горожан.",
-                full: "Главный культурный сектор города (ДК Юбилейный) открывает двери для проведения торжественного мероприятия. Вход свободный для всех резидентов.",
-                views: 980
+                category: "ЖКХ", label: "bg-amber-950 text-amber-400", time: "Вчера",
+                title: "Ремонт теплосетей в южной части города",
+                short: "Коммунальные службы проводят замену аварийного участка трубопровода.",
+                full: "По данным ЕДДС, работы ведутся без долгосрочного отключения потребителей. Завершение планируется к концу текущей недели."
             }
         ];
 
         function renderNews() {
             const container = document.getElementById('news-container');
             container.innerHTML = '';
-            realNewsData.forEach((news, idx) => {
+            realNewsData.forEach((n, idx) => {
                 container.innerHTML += `
-                    <div onclick="openModal(${idx})" class="bg-[#0f172a]/40 rounded-2xl p-6 border border-blue-900/40 flex flex-col justify-between hover:border-red-500/50 hover:shadow-[0_0_20px_rgba(239,68,68,0.1)] transition-all duration-300 cursor-pointer group">
+                    <div onclick="openModal(${idx})" class="bg-[#131924]/60 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition cursor-pointer flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between mb-4 font-mono text-[10px]">
-                                <span class="px-2 py-0.5 rounded ${news.tagColor}">${news.category}</span>
-                                <span class="text-slate-500">>> ${news.time}</span>
+                            <div class="flex items-center justify-between text-[11px] mb-3">
+                                <span class="px-2 py-0.5 rounded font-medium ${n.label}">${n.category}</span>
+                                <span class="text-slate-500">${n.time}</span>
                             </div>
-                            <h3 class="font-bold text-base text-white group-hover:text-red-400 transition-colors mb-2 uppercase tracking-wide">${news.title}</h3>
-                            <p class="text-slate-400 text-xs font-normal line-clamp-3 leading-relaxed">${news.short}</p>
+                            <h3 class="font-bold text-white text-sm mb-2 hover:text-blue-400 transition">${n.title}</h3>
+                            <p class="text-slate-400 text-xs font-light line-clamp-3 leading-relaxed">${n.short}</p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-blue-900/20 flex items-center text-[10px] font-mono text-slate-500 gap-1.5">
-                            <i data-lucide="eye" class="w-3.5 h-3.5 text-blue-400"></i> РЕЙТИНГ ПРОСМОТРОВ: ${news.views}
-                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/60 text-[10px] text-slate-500 uppercase font-mono">Читать подробнее →</div>
                     </div>`;
             });
             lucide.createIcons();
         }
 
         function openModal(idx) {
-            const news = realNewsData[idx];
+            const n = realNewsData[idx];
             document.getElementById('modal-content').innerHTML = `
-                <div class="flex justify-between items-center mb-3 text-[10px]">
-                    <span class="px-2 py-0.5 rounded ${news.tagColor}">${news.category}</span>
-                    <span class="text-slate-500">TIME: ${news.time}</span>
-                </div>
-                <h2 class="text-base font-black text-white uppercase mb-4 tracking-wide border-b border-blue-900/40 pb-2">${news.title}</h2>
-                <p class="text-slate-300 text-xs leading-relaxed mb-6 font-normal">${news.full}</p>
-                <p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">>> ИСТОЧНИК: ТАЙШЕТ24 БАЗА</p>`;
+                <span class="text-xs px-2 py-0.5 rounded ${n.label} mb-2 inline-block">${n.category}</span>
+                <h2 class="text-base font-bold text-white mb-3">${n.title}</h2>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">${n.full}</p>
+                <p class="text-[10px] text-slate-500 font-mono">Источник: Сводки Тайшет24</p>`;
             document.getElementById('news-modal').classList.remove('hidden');
         }
         function closeModal() { document.getElementById('news-modal').classList.add('hidden'); }
 
-        // ИНТЕРФЕЙС ФИЛЬТРАЦИИ КАРТЫ
-        function filterPlaces(category) {
-            const cards = document.querySelectorAll('#places-grid > div');
-            ['all', 'history', 'nature'].forEach(btn => {
-                document.getElementById(`btn-${btn}`).className = btn === category 
-                    ? "px-4 py-2 rounded-lg bg-blue-600 text-white font-bold shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-                    : "px-4 py-2 rounded-lg bg-slate-900 border border-blue-900/60 text-slate-400 hover:text-white";
-            });
-            cards.forEach(card => card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'block' : 'none');
-        }
-
-        // РАСПИСАНИЕ ЖД ТЕРМИНАЛА
-        const trainData = {
-            long: [
-                { id: "002Щ", route: "МОСКВА — ВЛАДИВОСТОК", time: "14:25", status: "ОЖИДАЕТСЯ", statusColor: "text-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.2)]" },
-                { id: "070Ч", route: "МОСКВА — ЧИТА", time: "16:10", status: "ПО ГРАФИКУ", statusColor: "text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]" },
-                { id: "097Э", route: "ТЫНДА — КИСЛОВОДСК", time: "21:15", status: "ПО ГРАФИКУ", statusColor: "text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]" }
+        // База данных транспорта
+        const transportData = {
+            train: [
+                { id: "002Щ", route: "Москва — Владивосток", time: "14:25", status: "Ожидается", statusClass: "bg-amber-950 text-amber-400" },
+                { id: "070Ч", route: "Москва — Чита", time: "16:10", status: "По графику", statusClass: "bg-emerald-950 text-emerald-400" },
+                { id: "097Э", route: "Тында — Кисловодск", time: "21:15", status: "По графику", statusClass: "bg-emerald-950 text-emerald-400" }
             ],
-            sub: [
-                { id: "6402", route: "ТАЙШЕТ — НИЖНЕУДИНСК", time: "07:30", status: "АРХИВ / УШЕЛ", statusColor: "text-slate-500" },
-                { id: "6491", route: "ЧУНА — ТАЙШЕТ", time: "11:50", status: "ПРИБЫЛ", statusColor: "text-blue-400" },
-                { id: "6404", route: "ТАЙШЕТ — НИЖНЕУДИНСК", time: "17:45", status: "ПО ГРАФИКУ", statusColor: "text-emerald-400" }
+            bus: [
+                { id: "№ 101", route: "Тайшет (Автостанция) — Бирюсинск", time: "08:20, 11:40, 15:10", status: "Ежедневно", statusClass: "bg-slate-800 text-slate-300" },
+                { id: "№ 104", route: "Тайшет — Квиток", time: "07:50, 14:00", status: "Пн, Ср, Пт", statusClass: "bg-slate-800 text-slate-300" },
+                { id: "№ 107", route: "Тайшет — Старошелехово", time: "09:15, 17:30", status: "Ежедневно", statusClass: "bg-slate-800 text-slate-300" }
             ]
         };
-        let currentTab = 'long';
-        function renderTrains() {
-            const body = document.getElementById('trains-body');
-            const searchVal = document.getElementById('search-train').value.toLowerCase();
+
+        let currentTab = 'train';
+        function renderTransport() {
+            const body = document.getElementById('transport-body');
             body.innerHTML = '';
-            const filtered = trainData[currentTab].filter(t => t.id.toLowerCase().includes(searchVal) || t.route.toLowerCase().includes(searchVal));
-            if(!filtered.length) { body.innerHTML = `<tr><td colspan="4" class="py-8 text-center text-slate-600">// ДАННЫЕ ОТСУТСТВУЮТ</td></tr>`; return; }
-            filtered.forEach(t => {
+            transportData[currentTab].forEach(item => {
                 body.innerHTML += `
-                    <tr class="hover:bg-blue-950/20 transition-colors">
-                        <td class="py-4 pl-2 font-bold text-cyan-400">${t.id}</td>
-                        <td class="py-4 font-bold text-slate-200 tracking-wide">${t.route}</td>
-                        <td class="py-4 text-white font-bold">${t.time}</td>
-                        <td class="py-4 font-black ${t.statusColor}">[ ${t.status} ]</td>
+                    <tr class="hover:bg-slate-800/20 transition-colors">
+                        <td class="py-3.5 pl-2 font-mono font-bold text-blue-400">${item.id}</td>
+                        <td class="py-3.5 font-medium text-slate-200">${item.route}</td>
+                        <td class="py-3.5 font-mono text-xs text-slate-300">${item.time}</td>
+                        <td class="py-3.5"><span class="px-2 py-0.5 text-xs rounded font-medium ${item.statusClass}">${item.status}</span></td>
                     </tr>`;
             });
         }
+
         function switchTab(tab) {
             currentTab = tab;
-            document.getElementById('tab-long').className = tab === 'long' ? "px-4 py-2 rounded-lg font-bold bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.3)]" : "px-4 py-2 rounded-lg font-bold text-slate-400";
-            document.getElementById('tab-sub').className = tab === 'sub' ? "px-4 py-2 rounded-lg font-bold bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.3)]" : "px-4 py-2 rounded-lg font-bold text-slate-400";
-            renderTrains();
+            document.getElementById('tab-train').className = tab === 'train' ? "px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white" : "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400";
+            document.getElementById('tab-bus').className = tab === 'bus' ? "px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white" : "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400";
+            renderTransport();
         }
-        function filterTrains() { renderTrains(); }
 
-        // МАТРИЦА ХАК-КВИЗА
-        const quizQuestions = [
-            { q: "Какой легендарный инфраструктурный проект берет начало на станции Тайшет?", a: ["Транссибирская магистраль", "Байкало-Амурская магистраль (БАМ)", "Южно-Сибирский путь"], correct: 1 },
-            { q: "В каком временном периоде Тайшету присвоен официальный статус города?", a: ["В 1897 году при прокладке рельс", "В 1938 году решением властей", "В 1953 году после реформ"], correct: 1 },
-            { q: "Какая водная артерия протекает в непосредственной близости от города?", a: ["Река Бирюса", "Великая Ангара", "Река Лена"], correct: 0 }
+        // Логика Инцидентов / Проблем ЖКХ
+        const initialIncidents = [
+            { name: "Алексей", address: "ул. Транспортная, д. 19", text: "Крупная выбоина на выезде со двора, задевает днище машин при проезде.", status: "В обработке ЕДДС", statusClass: "border-amber-500/30 text-amber-400 bg-amber-950/20" },
+            { name: "Мария", address: "ул. Пушкина (район сквера)", text: "Переполнена мусорная площадка, баки забиты уже третий день.", status: "Выполнено", statusClass: "border-emerald-500/30 text-emerald-400 bg-emerald-950/20" }
         ];
-        let currentQuestionIdx = 0;
-        let score = 0;
 
-        function renderQuiz() {
-            const box = document.getElementById('quiz-box');
-            if (currentQuestionIdx >= quizQuestions.length) {
-                let textResult = "НИЗКИЙ УРОВЕНЬ ДОСТУПА. СТОИТ ПОЧИТАТЬ ИСТОРИЮ.";
-                if (score === 3) textResult = "МАКСИМАЛЬНЫЙ УРОВЕНЬ ДОСТУПА! ТЫ ИСТИННЫЙ ЖИТЕЛЬ ТАЙШЕТА!";
-                box.innerHTML = `
-                    <div class="text-center py-6">
-                        <h3 class="text-xl font-black text-emerald-400 mb-2">// ТЕСТИРОВАНИЕ ЗАВЕРШЕНО</h3>
-                        <p class="text-sm text-slate-300">ВАШ РЕЗУЛЬТАТ: <span class="font-bold text-white text-lg">${score}</span> ИЗ ${quizQuestions.length}</p>
-                        <p class="text-xs text-slate-500 mt-2 font-bold">${textResult}</p>
-                        <button onclick="restartQuiz()" class="mt-6 bg-emerald-500 hover:bg-emerald-400 text-black font-black px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)]">ПЕРЕЗАПУСТИТЬ ЯДРО</button>
+        function renderIncidents() {
+            const container = document.getElementById('incidents-container');
+            container.innerHTML = '';
+            initialIncidents.forEach(inc => {
+                container.innerHTML += `
+                    <div class="bg-[#131924]/40 border border-slate-800 p-4 rounded-xl text-xs">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-slate-300">${inc.address}</span>
+                            <span class="border px-2 py-0.5 rounded text-[10px] font-medium ${inc.statusClass}">${inc.status}</span>
+                        </div>
+                        <p class="text-slate-400 font-light leading-relaxed mb-2">${inc.text}</p>
+                        <div class="text-[10px] text-slate-500 font-mono">Отправитель: ${inc.name}</div>
                     </div>`;
-                return;
-            }
-            const q = quizQuestions[currentQuestionIdx];
-            let optionsHtml = '';
-            q.a.forEach((ans, i) => {
-                optionsHtml += `<button onclick="checkAnswer(${i})" class="w-full text-left bg-slate-900/60 hover:bg-blue-950/40 border border-blue-900/40 p-4 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all active:scale-[0.99] uppercase tracking-wide">>> ${ans}</button>`;
             });
-            box.innerHTML = `
-                <div class="mb-4 text-[10px] text-emerald-500 uppercase font-black tracking-widest">// СТЕК-ВОПРОС: ${currentQuestionIdx + 1} ИЗ ${quizQuestions.length}</div>
-                <h3 class="text-sm font-black mb-6 text-white uppercase tracking-wide border-l-2 border-emerald-500 pl-3">${q.q}</h3>
-                <div class="space-y-2">${optionsHtml}</div>`;
         }
 
-        function checkAnswer(chosenIdx) {
-            if(chosenIdx === quizQuestions[currentQuestionIdx].correct) score++;
-            currentQuestionIdx++;
-            renderQuiz();
-        }
-        function restartQuiz() { currentQuestionIdx = 0; score = 0; renderQuiz(); }
+        function addIncident(e) {
+            e.preventDefault();
+            const name = document.getElementById('inc-name').value;
+            const address = document.getElementById('inc-address').value;
+            const text = document.getElementById('inc-text').value;
 
-        // ИНИЦИАЛИЗАЦИЯ ВСЕХ СИСТЕМ
+            initialIncidents.unshift({
+                name: name,
+                address: address,
+                text: text,
+                status: "Новое / На модерации",
+                statusClass: "border-blue-500/30 text-blue-400 bg-blue-950/20"
+            });
+
+            document.getElementById('inc-name').value = '';
+            document.getElementById('inc-address').value = '';
+            document.getElementById('inc-text').value = '';
+
+            renderIncidents();
+        }
+
+        // Старт
         renderNews();
-        renderTrains();
-        renderQuiz();
+        renderTransport();
+        renderIncidents();
     </script>
 </body>
 </html>
