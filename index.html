@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тайшет — Ворота БАМа</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Иконки Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 cache">
+    <!-- НАВИГАЦИЯ -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-blue-600 text-white p-2 rounded-lg">
@@ -19,16 +22,17 @@
             </div>
             <div class="hidden md:flex space-x-8 font-medium text-slate-600">
                 <a href="#about" class="hover:text-blue-600 transition">О городе</a>
-                <a href="#history" class="hover:text-blue-600 transition">История</a>
-                <a href="#transport" class="hover:text-blue-600 transition">Транспорт</a>
+                <a href="#places" class="hover:text-blue-600 transition">Места</a>
+                <a href="#board" class="hover:text-blue-600 transition">Расписание</a>
             </div>
             <div class="flex items-center space-x-2 text-sm bg-slate-100 px-3 py-1.5 rounded-full text-slate-600">
-                <i data-lucide="clock" class="w-4 h-4"></i>
-                <span id="local-time">КрасНСК +4</span>
+                <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+                <span id="local-time">Загрузка времени...</span>
             </div>
         </div>
     </nav>
 
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <header class="relative bg-slate-900 text-white overflow-hidden py-24 md:py-32">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-slate-900/95 z-0"></div>
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-700/30 via-transparent to-transparent z-0"></div>
@@ -44,25 +48,26 @@
                 Важнейший железнодорожный узел Сибири, город стальных магистралей и точка начала великого Байкало-Амурского пути.
             </p>
             <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <a href="#about" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition text-center shadow-lg shadow-blue-600/20">
-                    Узнать больше
+                <a href="#places" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition text-center shadow-lg shadow-blue-600/20">
+                    Исследовать город
                 </a>
-                <a href="#transport" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-6 py-3 rounded-xl transition text-center backdrop-blur-sm">
-                    Смотреть расписание
+                <a href="#board" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-6 py-3 rounded-xl transition text-center backdrop-blur-sm">
+                    Онлайн-табло вокзала
                 </a>
             </div>
         </div>
     </header>
 
-    <section id="about" class="py-16 max-w-6xl mx-auto px-4">
+    <!-- ЦИФРЫ -->
+    <section id="about" class="py-12 max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm text-center">
                 <div class="text-3xl font-black text-blue-600 mb-1">1897</div>
                 <div class="text-sm text-slate-500 font-medium">Год основания</div>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm text-center">
-                <div class="text-3xl font-black text-blue-600 mb-1">~32к</div>
-                <div class="text-sm text-slate-500 font-medium">Население</div>
+                <div class="text-3xl font-black text-blue-600 mb-1">~32 000</div>
+                <div class="text-sm text-slate-500 font-medium">Жителей</div>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm text-center">
                 <div class="text-3xl font-black text-blue-600 mb-1">0 км</div>
@@ -75,23 +80,212 @@
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-sm">
-        <p>&copy; 2026 Сайт города Тайшет. Сделано с гордостью на GitHub.</p>
+    <!-- ИНТЕРАКТИВНЫЙ ГИД (МЕСТА) -->
+    <section id="places" class="py-16 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Что посмотреть в Тайшете</h2>
+                    <p class="text-slate-500 mt-2">Главные локации и памятные места города</p>
+                </div>
+                <!-- Фильтры -->
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                    <button onclick="filterPlaces('all')" id="btn-all" class="px-4 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white transition shadow-sm">Все</button>
+                    <button onclick="filterPlaces('history')" id="btn-history" class="px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 hover:bg-slate-200 transition">История</button>
+                    <button onclick="filterPlaces('nature')" id="btn-nature" class="px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 hover:bg-slate-200 transition">Природа</button>
+                </div>
+            </div>
+
+            <!-- Сетка карточек -->
+            <div class="grid md:grid-cols-3 gap-6" id="places-grid">
+                <!-- Карточка 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm transition hover:shadow-md" data-category="history">
+                    <div class="h-48 bg-slate-300 relative flex items-center justify-center text-slate-400">
+                        <i data-lucide="image" class="w-12 h-12"></i>
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2.5 py-1 rounded-md font-semibold">Памятник</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Памятник воинам-землякам</h3>
+                        <p class="text-slate-600 text-sm font-light">Мемориал в честь жителей Тайшета, павших в годы Великой Отечественной войны. Место проведения памятных мероприятий.</p>
+                    </div>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm transition hover:shadow-md" data-category="history">
+                    <div class="h-48 bg-slate-300 relative flex items-center justify-center text-slate-400">
+                        <i data-lucide="train" class="w-12 h-12"></i>
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2.5 py-1 rounded-md font-semibold">Ж/Д</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Вокзал станции Тайшет</h3>
+                        <p class="text-slate-600 text-sm font-light">Современный вокзальный комплекс. Именно отсюда берет свое официальное начало Байкало-Амурская магистраль.</p>
+                    </div>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm transition hover:shadow-md" data-category="nature">
+                    <div class="h-48 bg-slate-300 relative flex items-center justify-center text-slate-400">
+                        <i data-lucide="trees" class="w-12 h-12"></i>
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-md font-semibold">Природа</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Городской Парк</h3>
+                        <p class="text-slate-600 text-sm font-light">Обновленная зеленая зона для отдыха всей семьей, прогулок, спортивных активностей и проведения праздников.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОНЛАЙН-ТАБЛО ВОКЗАЛА -->
+    <section id="board" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="bg-slate-900 rounded-3xl text-white p-6 md:p-8 shadow-xl relative overflow-hidden border border-slate-800">
+            <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-6 mb-6 gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-amber-500 text-slate-950 p-2.5 rounded-xl animate-pulse">
+                        <i data-lucide="conveyor-belt"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold tracking-tight">Онлайн-табло станции Тайшет</h2>
+                        <p class="text-sm text-slate-400">Демонстрационное расписание движения поездов</p>
+                    </div>
+                </div>
+                
+                <!-- Поиск и переключатели -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="search-train" oninput="filterTrains()" placeholder="Поиск поезда или города..." class="bg-slate-800 border border-slate-700 text-white px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-blue-500 placeholder-slate-500">
+                    <div class="bg-slate-800 p-1 rounded-xl flex border border-slate-700">
+                        <button onclick="switchTab('long')" id="tab-long" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white transition">Дальние</button>
+                        <button onclick="switchTab('sub')" id="tab-sub" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition">Пригородные</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Таблица расписания -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+                            <th class="pb-3 font-semibold">№ Поезда</th>
+                            <th class="pb-3 font-semibold">Маршрут</th>
+                            <th class="pb-3 font-semibold">Время (Местное)</th>
+                            <th class="pb-3 font-semibold">Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trains-body" class="divide-y divide-slate-800/60 text-sm">
+                        <!-- Сюда данные рендерятся из JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="bg-slate-950 text-slate-500 py-8 text-center text-xs border-t border-slate-900">
+        <p>&copy; 2026 Сайт города Тайшет. Разработано на платформе GitHub.</p>
     </footer>
 
+    <!-- СКРИПТЫ -->
     <script>
-        // Инициализация иконок Lucide
+        // Инициализация иконок
         lucide.createIcons();
 
-        // Обновление локального времени (Иркутск, UTC+8)
+        // Часы
         function updateTime() {
             const now = new Date();
-            const options = { timeZone: 'Asia/Irkutsk', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            const timeString = now.toLocaleTimeString('ru-RU', options);
+            const timeString = now.toLocaleTimeString('ru-RU', { timeZone: 'Asia/Irkutsk', hour: '2-digit', minute: '2-digit', second: '2-digit' });
             document.getElementById('local-time').textContent = `Тайшет: ${timeString}`;
         }
         setInterval(updateTime, 1000);
         updateTime();
+
+        // Логика фильтрации МЕСТ
+        function filterPlaces(category) {
+            const cards = document.querySelectorAll('#places-grid > div');
+            const buttons = ['all', 'history', 'nature'];
+            
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if(btn === category) {
+                    el.className = "px-4 py-2 rounded-xl text-sm font-medium bg-blue-600 text-white transition shadow-sm";
+                } else {
+                    el.className = "px-4 py-2 rounded-xl text-sm font-medium bg-white text-slate-600 hover:bg-slate-200 transition";
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Данные расписания
+        const trainData = {
+            long: [
+                { id: "002Щ", route: "Москва — Владивосток (Россия)", time: "14:25", status: "Ожидается", statusColor: "text-amber-400" },
+                { id: "070Ч", route: "Москва — Чита", time: "16:10", status: "По расписанию", statusColor: "text-emerald-400" },
+                { id: "001М", route: "Владивосток — Москва", time: "18:40", status: "Прибыл", statusColor: "text-slate-400" },
+                { id: "097Э", route: "Тында — Кисловодск", time: "21:15", status: "По расписанию", statusColor: "text-emerald-400" }
+            ],
+            sub: [
+                { id: "6402", route: "Тайшет — Нижнеудинск", time: "07:30", status: "Отправился", statusColor: "text-slate-400" },
+                { id: "6491", route: "Чуuna — Тайшет", time: "11:50", status: "Прибыл", statusColor: "text-slate-400" },
+                { id: "6404", route: "Тайшет — Нижнеудинск", time: "17:45", status: "По расписанию", statusColor: "text-emerald-400" },
+                { id: "6415", route: "Лена (Усть-Кут) — Тайшет", time: "20:05", status: "По расписанию", statusColor: "text-emerald-400" }
+            ]
+        };
+
+        let currentTab = 'long';
+
+        function renderTrains() {
+            const body = document.getElementById('trains-body');
+            const searchVal = document.getElementById('search-train').value.toLowerCase();
+            body.innerHTML = '';
+
+            const filtered = trainData[currentTab].filter(t => 
+                t.id.toLowerCase().includes(searchVal) || 
+                t.route.toLowerCase().includes(searchVal)
+            );
+
+            if(filtered.length === 0) {
+                body.innerHTML = `<tr><td colspan="4" class="py-8 text-center text-slate-500">Поезда не найдены</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(t => {
+                body.innerHTML += `
+                    <tr class="hover:bg-slate-800/40 transition">
+                        <td class="py-4 font-mono font-bold text-blue-400">${t.id}</td>
+                        <td class="py-4 font-medium text-slate-200">${t.route}</td>
+                        <td class="py-4 font-mono">${t.time}</td>
+                        <td class="py-4 ${t.statusColor} font-medium">${t.status}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            const tLong = document.getElementById('tab-long');
+            const tSub = document.getElementById('tab-sub');
+
+            if(tab === 'long') {
+                tLong.className = "px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white transition";
+                tSub.className = "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition";
+            } else {
+                tSub.className = "px-4 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white transition";
+                tLong.className = "px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition";
+            }
+            renderTrains();
+        }
+
+        function filterTrains() {
+            renderTrains();
+        }
+
+        // Первичный рендер
+        renderTrains();
     </script>
 </body>
 </html>
